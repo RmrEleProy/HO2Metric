@@ -1,6 +1,6 @@
 // Code generated for Waveshare Pico-ePaper-3.7 + RP2040 (TinyGo)
 // Flashear: tinygo flash -target=pico .
-// HO2Metric — Monitor de tanque de agua con relés y botones
+// HO2Metric — Monitor de tanque de agua 
 package main
 
 import (
