@@ -219,10 +219,14 @@ func main() {
 				fmt.Println("→ SLEEP: timeout")
 			} else {
 				// Redibujar si algo cambió
-				if NivelAgua != prevNivel || ModoAuto != prevModo || BombaOn != prevBomba {
-					prevNivel = NivelAgua
-					prevModo = ModoAuto
-					prevBomba = BombaOn
+				batCambio := BatPct != prevBatPct || BatMV != prevBatMV || BatEstadoAct != prevBatEst
+				if NivelAgua != prevNivel || ModoAuto != prevModo || BombaOn != prevBomba|| batCambio {
+								prevNivel = NivelAgua
+			prevModo = ModoAuto
+			prevBomba = BombaOn
+			prevBatPct = BatPct
+			prevBatMV = BatMV
+			prevBatEst = BatEstadoAct
 					drawPantalla(epd)
 					epd.show()
 				}
@@ -263,24 +267,5 @@ func main() {
 				epd.show()
 			}
 		}
-		//TODO verificar esta parte antes de flashear el rp pico,
-		// ── Redibujar pantalla si algo cambió ──────────────────────────
-		batCambio := BatPct != prevBatPct || BatMV != prevBatMV || BatEstadoAct != prevBatEst
-		if NivelAgua != prevNivel || ModoAuto != prevModo ||
-			BombaOn != prevBomba || batCambio {
-			prevNivel = NivelAgua
-			prevModo = ModoAuto
-			prevBomba = BombaOn
-			fmt.Println("cumplio la espresion")
-			prevBatPct = BatPct
-			prevBatMV = BatMV
-			prevBatEst = BatEstadoAct
-			drawPantalla(epd)
-			epd.show() // full refresh 4 grises (~4 segundos)
-			fmt.Println("se redibujó la pantalla")
-		}
-		fmt.Println("ciclo completo, esperando el próximo...")
-		time.Sleep(50 * time.Millisecond) // polling rápido para no perder pulsaciones
-
 	}
 }
