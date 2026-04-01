@@ -2,6 +2,8 @@
 
 Monitor de tanque de agua con control automático de bomba, pantalla e-ink de 4 grises y sistema de alertas. Desarrollado para **Raspberry Pi Pico o pico 2 (RP2040 o RP2350)** con **TinyGo**.
 
+![HO2Metric — vista general](HO2Metric.jpg)
+
 ---
 
 ## Tabla de contenidos
